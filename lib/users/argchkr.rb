@@ -53,5 +53,24 @@ module Users
       end
     end
 
+    EmailChkr = Policy.new(
+      "email", ":%s must be valid email String[5, 50]",
+      ->(v) {
+        rx = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+        v.is_a?(String) && v.length.between?(5,50) && rx =~ v
+      })
+
+    UserNameChkr = Policy.new(
+      "user_name", ":%s must be String[3,50]",
+      ->(v) { v.is_a?(String) && v.length.between?(3, 50) })
+
+    PasswordChkr = Policy.new(
+      "password", ":%s must be String[8,50]",
+      ->(v) { v.is_a?(String) && v.length.between?(8, 50) })
+
+    MoreThanZero = Policy.new(
+      "argument", ":%s must be Integer > 0",
+      ->(v) { v.is_a?(Integer) && v > 0 })
+
   end
 end

@@ -11,6 +11,30 @@ module Users
 
   class << self
 
+    def authenticate_user(email:, password:)
+      Services::AuthenticateUser.(
+        email: email, password: password)
+    end
+
+    def create_user(name:, email:, password:)
+      Services::CreateUser.(
+        name: name, email: email, password: password)
+    end
+
+    def change_user_password(email:, old_password:, new_password:)
+      Services::ChangeUserPassword.(email: email,
+        old_password: old_password, new_password: new_password)
+    end
+
+    def select_users(query: [], order_by: [], limit: 25, offset: 0)
+      Services::SelectUsers.(query: query, order_by: order_by,
+        limit: limit, offset: offset)
+    end
+
+    def error!(message)
+      raise Error.new(message)
+    end
+
     def root
       File.dirname __dir__
     end

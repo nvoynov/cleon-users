@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    users (0.1.0)
+      bcrypt (~> 3.1.16)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bcrypt (3.1.16)
+    minitest (5.14.4)
+    rake (13.0.6)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  bcrypt (~> 3.1.16)
+  minitest (~> 5.0)
+  rake (~> 13.0)
+  users!
+
+BUNDLED WITH
+   2.2.26
