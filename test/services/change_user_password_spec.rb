@@ -20,14 +20,14 @@ describe ChangeUserPassword do
     let(:newpw) { "abcdefgh" }
 
     it 'must change password' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       cred = ChangeUserPassword.(email: email,
         old_password: passw, new_password: newpw)
       _(newpw).must_equal cred.password
     end
 
     it 'must return ArgumentError for wrong :new_password' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{ ChangeUserPassword.(email: email,
                old_password: passw,
                new_password: "short")
@@ -35,7 +35,7 @@ describe ChangeUserPassword do
     end
 
     it 'must return Users::Error for wrong email' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{ ChangeUserPassword.(email: "unknown",
                old_password: passw,
                new_password: newpw)
@@ -43,7 +43,7 @@ describe ChangeUserPassword do
     end
 
     it 'must return Users::Error for wrong password' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{ ChangeUserPassword.(email: email,
                old_password: "wrong",
                new_password: newpw)

@@ -4,7 +4,7 @@ require_relative "../entities"
 module Users
   module Services
 
-    class CreateUser < Service
+    class RegisterUser < Service
       include Users::Entities
 
       def initialize(name:, email:, password:)

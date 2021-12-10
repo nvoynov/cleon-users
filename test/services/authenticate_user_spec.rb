@@ -18,19 +18,19 @@ describe AuthenticateUser do
     let(:passw) { "pa$$w0rd" }
 
     it 'must authenticate and return user' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       user = AuthenticateUser.(email: email, password: passw)
       _(user).wont_be_nil
     end
 
     it 'must return Users::Error for unknown email' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{ AuthenticateUser.(email: "a@b.c", password: passw)
       }).must_raise Users::Error
     end
 
     it 'must return Users::Error for wrong password' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{ AuthenticateUser.(email: email, password: "wrongpa$$")
         }).must_raise Users::Error
     end

@@ -17,7 +17,7 @@ module Users
     end
 
     def create_user(name:, email:, password:)
-      Services::CreateUser.(
+      Services::RegisterUser.(
         name: name, email: email, password: password)
     end
 

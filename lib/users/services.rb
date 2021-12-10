@@ -1,5 +1,5 @@
 require_relative "services/service"
-require_relative "services/create_user"
+require_relative "services/register_user"
 require_relative "services/change_user_password"
 require_relative "services/authenticate_user"
 require_relative "services/select_users"

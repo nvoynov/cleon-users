@@ -8,7 +8,7 @@ module Users
       include Users::Entities
 
       def initialize(query: [], order_by: [], limit: 25, offset: 0)
-        @limit = MoreThanZero.chk!(limit)
+        @limit = MoreThanZero.chk!(limit, name: "limit")
         @limit = 25 if @limit > 25
         @offset = offset
         # TODO: what shuld be format for :query and :order_by?
@@ -16,6 +16,7 @@ module Users
         @order_by = order_by
       end
 
+      # @return [Array] @see Users::Gateways::Gateway#select_users
       def call
         gateway.select_users(
           query: @query, order_by: @order_by,

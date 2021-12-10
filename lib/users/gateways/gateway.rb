@@ -34,7 +34,15 @@ module Users
       # @param order_by [?]
       # @param limit [Integer] number of users per data page
       # @param offset [Integer] number of page
-      # @return [Array<User>] according to criteria above
+      # @return [Array] where item 0 is [Array<User>]; and item 1 [Hash] with meta information {query:, order_by:, limit:, next:, prev:}
+      # @example
+      #    users, meta = gateway.select_users(limit: 20)
+      #    while meta[:next]
+      #      items, meta = gateway.select_users(
+      #        Hash[meta].merge!({offset: meta[:next]})
+      #       )
+      #      users.concat(items)
+      #    end
       def select_users(query:, order_by:, limit:, offset:)
       end
 

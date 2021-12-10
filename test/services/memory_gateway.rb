@@ -37,12 +37,16 @@ class MemoryGateway < Users::Gateways::Gateway
   # @param order_by [?]
   # @param limit [Integer] number of users per data page
   # @param offset [Integer] number of page
-  # @return [Array<User>] according to criteria above
+  # @return [Array] where item 0 is [Array<User>]; and item 1 [Hash] with meta information {query:, order_by:, limit:, next:, prev:}
   def select_users(query:, order_by:, limit:, offset:)
     limit = MAX_LIMIT if limit > MAX_LIMIT
     # TODO: apply query
     # TODO: apply order_by
-    @storage[:users].values[offset * limit, limit]
+    coll = @storage[:users].values[offset * limit, limit]
+    meta = {query: query, order_by: order_by, limit: limit}
+    meta[:next] = offset + 1 if coll && coll.size == limit
+    meta[:prev] = offset - 1 if offset > 0
+    [coll, meta]
   end
 
   MAX_LIMIT = 25

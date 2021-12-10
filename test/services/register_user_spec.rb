@@ -2,7 +2,7 @@ require_relative "../spec_helper"
 require_relative "memory_gateway"
 include Users::Services
 
-describe CreateUser do
+describe RegisterUser do
   before do
     @gateway ||= MemoryGateway.new
     Users.gateway = @gateway
@@ -19,7 +19,7 @@ describe CreateUser do
     let(:passw) { "pa$$w0rd"}
 
     it 'must create user' do
-      user = CreateUser.(name: uname, email: email, password: passw)
+      user = RegisterUser.(name: uname, email: email, password: passw)
       _(user).wont_be_nil
       _(user.uuid).wont_be_nil
       _(user.name).must_equal uname
@@ -34,9 +34,9 @@ describe CreateUser do
     end
 
     it 'must raise Users::Error when email already used' do
-      CreateUser.(name: uname, email: email, password: passw)
+      RegisterUser.(name: uname, email: email, password: passw)
       _(->{
-           CreateUser.(name: "new", email: email, password: passw)
+           RegisterUser.(name: "new", email: email, password: passw)
         }).must_raise Users::Error
     end
   end

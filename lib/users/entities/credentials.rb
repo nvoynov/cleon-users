@@ -7,6 +7,10 @@ module Users
 
     class Credentials < Entity
       include BCrypt
+      # TODO: it was a bad idea to hold it here
+      #  1) there must be only final attributes email, password_hash
+      #  and no password hashing logic
+       # 2) password hashig logic must be moved to registration_service, and there should be introduced CryptoProvider (and maybe PasswordPolicy also)
       # hash = BCrypt::Password.create(secret)
       # pasw = BCrypt::Password.new(hash)
       # pasw == secret NOT secret == passw
