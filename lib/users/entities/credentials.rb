@@ -18,10 +18,14 @@ module Users
       attr_reader :email
       attr_reader :password_hash
 
-      def initialize(email:, password:)
+      def initialize(email:, password:, password_hash: nil)
         @email = EmailChkr.chk!(email)
-        PasswordChkr.chk!(password)
-        @password_hash = Password.create(password)
+        if password_hash
+          @password_hash = password_hash
+        else
+          PasswordChkr.chk!(password)
+          @password_hash = Password.create(password)
+        end
       end
 
       def password

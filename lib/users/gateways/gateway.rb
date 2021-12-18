@@ -43,7 +43,7 @@ module Users
       #       )
       #      users.concat(items)
       #    end
-      def select_users(query:, order_by:, limit:, offset:)
+      def select_users(query: [], order_by: [], limit: 25, offset: 0)
       end
 
       # Finds a user by :email
