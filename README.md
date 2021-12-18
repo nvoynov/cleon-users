@@ -1,5 +1,9 @@
 [![Ruby](https://github.com/nvoynov/cleon-users/actions/workflows/main.yml/badge.svg)](https://github.com/nvoynov/cleon-users/actions/workflows/main.yml)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a2c6bf51dfbdece4b3cf/maintainability)](https://codeclimate.com/github/nvoynov/cleon-users/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a2c6bf51dfbdece4b3cf/test_coverage)](https://codeclimate.com/github/nvoynov/cleon-users/test_coverage)
+
 # Users
 
 The `Users` gem serves for simple but clean users domain model (bounded context) presented in the first chapter of the "Service-Oriented Design with Ruby and Rails (2010)."
