@@ -8,6 +8,8 @@ The word "clean" there stands for [The Clean Architecture](https://blog.cleancod
 
 To turn this model into a useful application, all you need to add to this model is the actual implementation of the gateway and the user interface. And this part will be provided later in a shape of users REST service.
 
+You can find more in my post [Cleon gem, the first evaluation](https://nvoynov.github.io/cleon-first-evaluation/)
+
 ## Installation
 
 Add this line to your application's Gemfile:
